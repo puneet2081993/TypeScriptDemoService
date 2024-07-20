@@ -11,7 +11,9 @@
     "build": "yarn run preBuild && npx tsc --outDir ./dist",
     "start": "node ./dist/api/app.js",
     "serve": "yarn run build && yarn run start",
-    "migrate": "yarn run migrate:API && yarn run migrate:workers",
+    "migrate-seed": "yarn run migrate && yarn run seed",
+    "migrate": "./node_modules/.bin/sequelize  --options-path ./.sequelize-api-db --env db db:migrate",
+    "seed": "./node_modules/.bin/sequelize  --options-path ./.sequelize-api-db --env db db:seed:all",
     "create-migration-api": "sequelize migration:create --options-path ./.sequelize-api-db --name ${FILE_NAME}"
   },
   "dependencies": {
@@ -20,7 +22,9 @@
     "express": "^4.19.2",
     "express-http-context": "^1.2.4",
     "express-validation": "^4.1.1",
+    "pg": "^8.12.0",
     "process": "^0.11.10",
+    "reflect-metadata": "^0.2.2",
     "sequelize": "^6.37.3",
     "sequelize-typescript": "^2.1.6",
     "typescript": "^5.5.3"

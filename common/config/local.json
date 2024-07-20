@@ -1,0 +1,24 @@
+{
+  "appName": "Deel-Service",
+  "appVersion": "1.0.0",
+  "description": "Deel Service",
+  "author": "Puneet Jain",
+  "port": "8000",
+  "db": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "test-db",
+    "username": "puneet",
+    "password": "root",
+    "dialect": "postgres",
+    "logging": "console.log",
+    "migrationStorage": "sequelize",
+    "seederStorage": "sequelize",
+    "pool": {
+      "max": 25,
+      "idle": 2000,
+      "evict": 2500,
+      "acquire": 15000
+    }
+  }
+}

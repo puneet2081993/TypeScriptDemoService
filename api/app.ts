@@ -6,6 +6,7 @@ import cors from 'cors';
 import * as httpContext from 'express-http-context';
 import config from '../common/config';
 import routes from './routes';
+import apiDB from '../db';
 
 const allowCrossDomain: express.RequestHandler = (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -35,6 +36,9 @@ const startServer = async () => {
 
     /** Increased the keep alive timeout to 45 seconds */
     server.keepAliveTimeout = 45000;
+
+    // to check the connection
+    apiDB.authenticate();
 
     app.get('/health', (_req, res) => res.send('OK'));
 
